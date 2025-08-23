@@ -1,32 +1,49 @@
 <script setup>
 import SearchInput from '@/components/search/SearchInput.vue';
+import Aside from '@/components/ui/aside.vue';
+import { useUiStore } from '@/stores/uiStore';
+
+const ui = useUiStore();
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col">
-    <header class="bg-base-100 p-4">
-      <div class="mx-auto flex max-w-screen-xl items-center justify-between">
-        <a href="/" class="flex items-center gap-3.5">
-          <figure>
-            <img
-              src="/logo.svg"
-              alt="logo"
-              class="aspect-square w-9 dark:invert"
+  <div
+    class="flex min-h-screen w-screen flex-col md:grid md:grid-cols-[auto_1fr] md:grid-rows-[auto_1fr_auto]"
+  >
+    <Aside />
+    <header class="bg-base-100 col-span-1 p-4">
+      <div class="mx-auto flex items-center gap-3.5">
+        <button class="btn btn-ghost btn-md flex md:hidden" @click="ui.toggle">
+          <svg
+            class="size-[1.5em]"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="M5 7h14M5 12h14M5 17h14"
             />
-          </figure>
-          <h1 class="text-xl"><span class="text-primary">MAL</span>chemy</h1>
-        </a>
+          </svg>
+        </button>
         <SearchInput />
       </div>
     </header>
-    <main class="bg-base-200 flex-1">
-      <router-view />
+    <main class="bg-base-200 col-span-1 col-start-2 row-start-2 max-md:flex-1">
+      <div class="mx-auto max-w-7xl p-6">
+        <router-view />
+      </div>
     </main>
-    <footer className="bg-base-100 p-4">
+    <footer className="bg-base-100 p-4 col-span-1">
       <div
         className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between"
       >
-        <div class="flex items-center gap-3.5">
+        <div class="flex flex-1 items-center gap-3.5">
           <figure>
             <img
               src="/logo.svg"
@@ -34,7 +51,7 @@ import SearchInput from '@/components/search/SearchInput.vue';
               class="aspect-square w-6 dark:invert"
             />
           </figure>
-          <p>
+          <p class="w-full flex-1 truncate text-sm">
             Copyright © {{ new Date().getFullYear() }} - All right reserved
           </p>
         </div>

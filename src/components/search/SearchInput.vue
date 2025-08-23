@@ -1,42 +1,44 @@
-<script setup>
-import { ref } from 'vue';
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 
-const display = ref(false);
+const searchInput = ref<HTMLInputElement | null>(null);
+
+const handleKeyDown = (e: KeyboardEvent) => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    searchInput.value?.focus();
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeyDown);
+});
 </script>
 
 <template>
-  <div class="flex items-center justify-end gap-3.5">
-    <input
-      type="search"
-      :inert="!display"
-      :class="[
-        'input input-primary input-md max-w-sm transition-all duration-300',
-        display ? 'w-full opacity-100' : 'w-0 opacity-0',
-      ]"
-    />
-    <button
-      :class="[
-        'btn btn-square btn-md hover:btn-primary',
-        !display ? 'btn-ghost' : 'btn-primary btn-outline',
-      ]"
-      @click="display = !display"
+  <label class="input" ref="searchInput">
+    <svg
+      class="h-[1em] opacity-50"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
     >
-      <svg
-        class="size-[1.2em]"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+      <g
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        stroke-width="2.5"
         fill="none"
-        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-width="2"
-          d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-        />
-      </svg>
-    </button>
-  </div>
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.3-4.3"></path>
+      </g>
+    </svg>
+    <input type="search" class="grow" placeholder="Search" />
+    <kbd class="kbd kbd-sm">⌘</kbd>
+    <kbd class="kbd kbd-sm">K</kbd>
+  </label>
 </template>
