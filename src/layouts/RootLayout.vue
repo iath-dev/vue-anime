@@ -11,7 +11,7 @@ const ui = useUiStore();
     class="flex min-h-screen w-screen flex-col md:grid md:grid-cols-[auto_1fr] md:grid-rows-[auto_1fr_auto]"
   >
     <Aside />
-    <header class="bg-base-100 col-span-1 p-4">
+    <header class="bg-base-100 sticky top-0 z-[5] col-span-1 p-4">
       <div class="mx-auto flex items-center gap-3.5">
         <button class="btn btn-ghost btn-md flex md:hidden" @click="ui.toggle">
           <svg
@@ -34,10 +34,8 @@ const ui = useUiStore();
         <SearchInput />
       </div>
     </header>
-    <main class="bg-base-200 col-span-1 col-start-2 row-start-2 max-md:flex-1">
-      <div class="mx-auto max-w-7xl p-6">
-        <router-view />
-      </div>
+    <main class="bg-base-200 col-span-1 col-start-2 row-start-2 overflow-auto">
+      <router-view />
     </main>
     <footer className="bg-base-100 p-4 col-span-1">
       <div

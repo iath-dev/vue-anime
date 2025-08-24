@@ -11,3 +11,13 @@ export const searchAnime = async (query: string): Promise<JikanResponse> => {
 
   return res.data;
 };
+
+export const getTopAnime = async (): Promise<JikanResponse> => {
+  const res = await api.get<JikanResponse>('/top/anime', {
+    params: {
+      limit: 5,
+    },
+  });
+
+  return res.data;
+};

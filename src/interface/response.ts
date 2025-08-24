@@ -6,7 +6,7 @@ export interface JikanResponse {
 export interface Anime {
   mal_id: number;
   url: string;
-  images: { [key: string]: Image };
+  images: Record<ImageFormat, Image>;
   trailer: Trailer;
   approved: boolean;
   titles: Title[];
@@ -41,6 +41,8 @@ export interface Anime {
   themes: Genre[];
   demographics: any[];
 }
+
+export type ImageFormat = 'jpg' | 'webp';
 
 export interface Aired {
   from: Date;
