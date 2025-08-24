@@ -23,6 +23,11 @@ const router = createRouter({
           name: 'season',
           component: () => import('@/views/HomeView.vue'),
         },
+        {
+          path: '/anime/:id',
+          name: 'anime-detail',
+          component: () => import('@/views/AnimeView.vue'),
+        },
       ],
     },
     {

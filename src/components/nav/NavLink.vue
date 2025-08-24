@@ -13,7 +13,7 @@ const ui = useUiStore();
     :class="[
       'hover:bg-base-200 flex w-full cursor-pointer items-center rounded p-3 transition-transform duration-500',
       {
-        'before:text-base-content before:absolute before:w-0 before:translate-x-4 before:overflow-x-hidden before:rounded-xl before:bg-gray-900/90 before:p-4 before:decoration-0 before:opacity-0 before:shadow-2xl before:transition-all before:duration-500 before:content-[attr(data-label)] hover:before:w-auto hover:before:translate-x-10 hover:before:opacity-100':
+        'before:text-base-content before:bg-base-200 before:absolute before:w-0 before:translate-x-4 before:overflow-x-hidden before:rounded-xl before:p-4 before:decoration-0 before:opacity-0 before:shadow-2xl before:transition-all before:duration-500 before:content-[attr(data-label)] hover:before:w-auto hover:before:translate-x-10 hover:before:opacity-100':
           !ui.open,
       },
     ]"
