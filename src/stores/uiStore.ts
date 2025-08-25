@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useUiStore = defineStore('ui', {
   state: () => ({
-    open: true,
+    open: false,
   }),
   actions: {
     toggle() {

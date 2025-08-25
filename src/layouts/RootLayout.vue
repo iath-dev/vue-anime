@@ -8,7 +8,7 @@ const ui = useUiStore();
 
 <template>
   <div
-    class="flex min-h-screen w-screen flex-col md:grid md:grid-cols-[auto_1fr] md:grid-rows-[auto_1fr_auto]"
+    class="flex min-h-screen w-full flex-col md:grid md:grid-cols-[auto_1fr] md:grid-rows-[auto_1fr_auto]"
   >
     <Aside />
     <header class="bg-base-100 sticky top-0 z-[5] col-span-1 p-4">
@@ -34,7 +34,9 @@ const ui = useUiStore();
         <SearchInput />
       </div>
     </header>
-    <main class="bg-base-200 col-span-1 col-start-2 row-start-2 overflow-auto">
+    <main
+      class="bg-base-200 col-span-1 col-start-2 row-start-2 overflow-x-hidden overflow-y-auto"
+    >
       <router-view />
     </main>
     <footer className="bg-base-100 p-4 col-span-1">

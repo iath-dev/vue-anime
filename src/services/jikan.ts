@@ -15,7 +15,18 @@ export const searchAnime = async (query: string): Promise<JikanResponse> => {
 export const getTopAnime = async (): Promise<JikanResponse> => {
   const res = await api.get<JikanResponse>('/top/anime', {
     params: {
-      limit: 5,
+      limit: 6,
+    },
+  });
+
+  return res.data;
+};
+
+export const getCurrentSeason = async (): Promise<JikanResponse> => {
+  const res = await api.get<JikanResponse>('/seasons/now', {
+    params: {
+      limit: 6,
+      continuing: true,
     },
   });
 
