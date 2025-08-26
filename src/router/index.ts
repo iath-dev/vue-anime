@@ -16,12 +16,12 @@ const router = createRouter({
         {
           path: '/upcoming',
           name: 'upcoming',
-          component: () => import('@/views/HomeView.vue'),
+          component: () => import('@/views/UpcomingView.vue'),
         },
         {
           path: '/season',
           name: 'season',
-          component: () => import('@/views/HomeView.vue'),
+          component: () => import('@/views/SeasonView.vue'),
         },
         {
           path: '/anime/:id',

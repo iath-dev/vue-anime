@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import type { Anime } from '@/interface/api/anime';
+import type { PaginatedResponse } from '@/interface/api/response';
 import { useQuery } from '@tanstack/vue-query';
-import type { JikanResponse } from '@/interface/response';
 
 const props = defineProps<{
   title: string;
   queryKey: string;
-  queryFn: () => Promise<JikanResponse>;
+  path: string;
+  queryFn: () => Promise<PaginatedResponse<Anime>>;
 }>();
 
 const { data, isLoading } = useQuery({
@@ -19,14 +21,14 @@ const { data, isLoading } = useQuery({
       <h1 class="text-lg font-semibold tracking-tight uppercase">
         {{ props.title }}
       </h1>
-      <router-link to="/trending" class="link-secondary text-sm"
+      <router-link :to="path" class="link-primary text-sm"
         >view all</router-link
       >
     </div>
     <div v-if="isLoading" class="skeleton h-30 w-full"></div>
     <div
       v-if="data"
-      class="flex w-full items-center gap-3.5 overflow-x-hidden overflow-y-hidden max-sm:[&>:nth-child(n+3)]:hidden max-md:[&>:nth-child(n+4)]:hidden max-lg:[&>:nth-child(n+5)]:hidden"
+      class="flex w-full items-center gap-3.5 overflow-x-auto overflow-y-hidden pb-4 max-sm:[&>:nth-child(n+3)]:hidden max-md:[&>:nth-child(n+4)]:hidden max-lg:[&>:nth-child(n+5)]:hidden max-xl:[&>:nth-child(n+7)]:hidden"
     >
       <div
         v-for="anime in data.data"
@@ -38,13 +40,12 @@ const { data, isLoading } = useQuery({
         >
           <figure>
             <img
-              :src="anime.images.webp.image_url"
+              :src="
+                anime.images.jpg.image_url ??
+                'https://placehold.co/300x400?text=No+Image'
+              "
               :alt="anime.title"
               loading="lazy"
-              @error="
-                (e) =>
-                  (e.target.src = 'https://placehold.co/300x400?text=No+Image')
-              "
               class="aspect-[3/4] h-64 rounded-xl object-cover"
             />
           </figure>
