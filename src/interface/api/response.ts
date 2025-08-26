@@ -1,5 +1,5 @@
 import type { Anime } from './anime';
-import type { Pagination } from './base';
+import type { Images, Pagination } from './base';
 import type { Character } from './characters';
 import type { Manga } from './manga';
 import type { Person } from './person';
@@ -29,3 +29,4 @@ export type UserMangaListResponse = PaginatedResponse<Manga>;
 export type RecommendationResponse = PaginatedResponse<Recommendation>;
 export type ReviewResponse = PaginatedResponse<Review>;
 export type VideoResponse = Response<Video>;
+export type ImagesResponse = Omit<PaginatedResponse<Images>, 'pagination'>;

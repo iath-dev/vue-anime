@@ -11,14 +11,18 @@ const Staff = defineAsyncComponent(() => import('@/components/AnimeStaff.vue'));
 const Recommendations = defineAsyncComponent(
   () => import('@/components/AnimeRecommendations.vue')
 );
+const Pictures = defineAsyncComponent(
+  () => import('@/components/AnimeImages.vue')
+);
 
-type Tab = 'details' | 'characters' | 'staff' | 'recommendations';
+type Tab = 'details' | 'characters' | 'staff' | 'recommendations' | 'pictures';
 
 const TABS: Record<Tab, string> = {
   details: 'Details',
   characters: 'Characters',
   staff: 'Staff',
   recommendations: 'Recommendations',
+  pictures: 'Pictures',
 };
 
 const route = useRoute();
@@ -35,7 +39,7 @@ const activeTab = ref<Tab>('details');
 </script>
 
 <template>
-  <section
+  <div
     v-if="data"
     class="container mx-auto grid max-w-7xl grid-cols-4 items-end gap-6 p-4"
   >
@@ -115,5 +119,18 @@ const activeTab = ref<Tab>('details');
     <Characters v-if="activeTab == 'characters'" />
     <Staff v-if="activeTab == 'staff'" />
     <Recommendations v-if="activeTab == 'recommendations'" />
-  </section>
+    <Pictures v-if="activeTab == 'pictures'" />
+  </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

@@ -1,26 +1,14 @@
+import type { Anime } from '@/interface/api/anime';
+import type { SearchParams, TopParams } from '@/interface/api/request';
+import api from '@/lib/api';
+import type { SeasonalParams } from '../interface/api/request';
 import type {
-  Anime,
-  AnimeRecommendation,
-  AnimeRelation,
-  AnimePicture,
-  AnimeStatistics
-} from '@/interface/api/anime'
-import type { SearchParams, TopParams } from '@/interface/api/request'
-import api from '@/lib/api'
-import type { SeasonalParams } from '../interface/api/request'
-import type {
+  ImagesResponse,
   PaginatedResponse,
   RecommendationResponse,
-  Response
-} from '@/interface/api/response'
-import type {
-  CharacterCard,
-  CharacterStaff
-} from '@/interface/api/characters'
-import type { Manga } from '@/interface/api/manga'
-import type { Person } from '@/interface/api/person'
-import type { Review } from '@/interface/api/review'
-import type { Video } from '@/interface/api/video'
+  Response,
+} from '@/interface/api/response';
+import type { CharacterCard, CharacterStaff } from '@/interface/api/characters';
 
 export const searchAnime = async ({
   q,
@@ -31,48 +19,54 @@ export const searchAnime = async ({
     params: {
       q,
       limit,
-      ...props
-    }
-  })
+      ...props,
+    },
+  });
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getAnimeFull = async (id: string): Promise<Response<Anime>> => {
-  const res = await api.get<Response<Anime>>(`/anime/${id}/full`)
+  const res = await api.get<Response<Anime>>(`/anime/${id}/full`);
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getAnimeCharacters = async (
   id: string
 ): Promise<{ data: Array<CharacterCard> }> => {
   const res = await api.get<{ data: Array<CharacterCard> }>(
     `/anime/${id}/characters`
-  )
+  );
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getAnimeStaff = async (
   id: string
 ): Promise<{ data: Array<CharacterStaff> }> => {
   const res = await api.get<{ data: Array<CharacterStaff> }>(
     `/anime/${id}/staff`
-  )
+  );
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getAnimeRecommendation = async (
   id: string
 ): Promise<RecommendationResponse> => {
   const res = await api.get<RecommendationResponse>(
     `/anime/${id}/recommendations`
-  )
+  );
 
-  return res.data
-}
+  return res.data;
+};
+
+export const getAnimePictures = async (id: string): Promise<ImagesResponse> => {
+  const res = await api.get<ImagesResponse>(`/anime/${id}/pictures`);
+
+  return res.data;
+};
 
 export const getTopAnime = async ({
   limit = 6,
@@ -81,12 +75,12 @@ export const getTopAnime = async ({
   const res = await api.get<PaginatedResponse<Anime>>('/top/anime', {
     params: {
       limit,
-      ...props
-    }
-  })
+      ...props,
+    },
+  });
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getCurrentSeason = async ({
   limit = 6,
@@ -99,12 +93,12 @@ export const getCurrentSeason = async ({
     params: {
       limit,
       continuing,
-      ...params
-    }
-  })
+      ...params,
+    },
+  });
 
-  return res.data
-}
+  return res.data;
+};
 
 export const getUpcoming = async ({
   limit = 6,
@@ -115,9 +109,9 @@ export const getUpcoming = async ({
   const res = await api.get<PaginatedResponse<Anime>>('/seasons/upcoming', {
     params: {
       limit,
-      ...props
-    }
-  })
+      ...props,
+    },
+  });
 
-  return res.data
-}
+  return res.data;
+};
