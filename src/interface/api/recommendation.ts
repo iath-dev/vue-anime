@@ -1,11 +1,7 @@
-import type { MalEntity } from './common';
-
-export interface RecommendationEntry extends Omit<MalEntity, 'name'> {
-  title: string;
-}
+import type { Entry } from './base';
 
 export interface Recommendation {
-  entry: RecommendationEntry;
+  entry: Entry;
   url: string;
   votes: number;
 }

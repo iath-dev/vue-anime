@@ -1,34 +1,70 @@
-import type { MalLink } from "./common";
-import type { Content } from './content';
-import type { AnimeStatus } from "./params";
+import type {
+  Aired,
+  Broadcast,
+  Demographic,
+  Entry,
+  Image,
+  Title,
+  Trailer,
+} from './base';
 
-// Anime types
-export interface Title {
+export interface Anime extends Entry {
+  trailer: Trailer;
+  approved: boolean;
+  titles: Title[];
+  title_english: string;
+  title_japanese: string;
+  title_synonyms: string[];
   type: string;
-  title: string;
-}
-
-export interface Anime extends Content {
   source: string;
   episodes: number | null;
-  status: AnimeStatus;
+  status: string;
   airing: boolean;
-  aired: {
-    from: string | null;
-    to: string | null;
-    string: string;
-  };
+  aired: Aired;
   duration: string;
   rating: string;
+  score: number | null;
+  scored_by: number | null;
+  rank: number | null;
+  popularity: number;
+  members: number;
+  favorites: number;
+  synopsis: string | null;
+  background: string | null;
   season: string | null;
   year: number | null;
-  broadcast: {
-    day: string | null;
-    time: string | null;
-    timezone: string | null;
-    string: string | null;
-  };
-  producers: MalLink[];
-  licensors: MalLink[];
-  studios: MalLink[];
+  broadcast: Broadcast;
+  producers: Demographic[];
+  licensors: Demographic[];
+  studios: Demographic[];
+  genres: Demographic[];
+  explicit_genres: any[];
+  themes: Demographic[];
+  demographics: Demographic[];
+}
+
+export interface AnimeRelation {
+  relation: string;
+  entry: Demographic[];
+}
+
+export interface AnimePicture {
+  jpg: Image;
+  webp: Image;
+}
+
+export interface AnimeStatistics {
+  watching: number;
+  completed: number;
+  on_hold: number;
+  dropped: number;
+  plan_to_watch: number;
+  total: number;
+  scores: Score[];
+}
+
+export interface Score {
+  score: number;
+  votes: number;
+  percentage: number;
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getAnimeFull } from '@/services/jikan';
 import { useQuery } from '@tanstack/vue-query';
-import { defineAsyncComponent, ref } from 'vue';
+import { computed, defineAsyncComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const Characters = defineAsyncComponent(
@@ -23,11 +23,11 @@ const TABS: Record<Tab, string> = {
 
 const route = useRoute();
 
-const animeId = route.params.id as string;
+const animeId = computed(() => route.params.id as string);
 
 const { data, isLoading } = useQuery({
   queryKey: ['anime', animeId],
-  queryFn: () => getAnimeFull(animeId),
+  queryFn: () => getAnimeFull(animeId.value),
   enabled: !!animeId,
 });
 
@@ -93,14 +93,24 @@ const activeTab = ref<Tab>('details');
     <nav class="col-span-full flex w-full gap-4 overflow-x-auto">
       <button
         v-for="(val, key) in TABS"
+        :key="key"
         :class="['btn', activeTab == key ? 'btn-soft btn-accent' : 'btn-ghost']"
         @click="activeTab = key"
       >
         {{ val }}
       </button>
     </nav>
-    <div v-if="activeTab == 'details'" class="col-span-full w-full">
+    <div
+      v-if="activeTab == 'details'"
+      class="col-span-full flex w-full flex-col gap-4"
+    >
       <p class="text-md">{{ data.data.synopsis }}</p>
+      <iframe
+        v-if="data.data.trailer.youtube_id"
+        :src="`https://www.youtube.com/embed/${data.data.trailer.youtube_id}`"
+        :title="data.data.titles[0].title"
+        class="aspect-video w-full rounded-lg"
+      ></iframe>
     </div>
     <Characters v-if="activeTab == 'characters'" />
     <Staff v-if="activeTab == 'staff'" />

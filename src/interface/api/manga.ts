@@ -1,7 +1,5 @@
-import type { MalLink } from "./common";
-import type { Content } from './content';
+import type { Content, Demographic } from './base';
 
-// Manga types
 export interface Manga extends Content {
   chapters: number | null;
   volumes: number | null;
@@ -12,6 +10,6 @@ export interface Manga extends Content {
     to: string | null;
     string: string;
   };
-  authors: MalLink[];
-  serializations: MalLink[];
+  authors: Demographic[];
+  serializations: Demographic[];
 }

@@ -2,6 +2,7 @@
 import { getAnimeRecommendation } from '@/services/jikan';
 import { useQuery } from '@tanstack/vue-query';
 import { useRoute } from 'vue-router';
+import AnimeCard from './AnimeCard.vue';
 
 const route = useRoute();
 
@@ -20,21 +21,10 @@ const { data, isLoading } = useQuery({
     v-if="!!data && !isLoading"
     class="col-span-full grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
   >
-    <div v-for="{ entry } in data.data" class="card card-sm shadow-md">
-      <figure>
-        <img
-          :src="
-            entry.images.jpg.image_url ??
-            'https://placehold.co/300x400?text=No+Image'
-          "
-          :alt="entry.title"
-          loading="lazy"
-          class="aspect-square w-full object-cover"
-        />
-      </figure>
-      <div class="card-body">
-        <h1 class="card-title">{{ entry.title }}</h1>
-      </div>
-    </div>
+    <AnimeCard
+      v-for="{ entry } in data.data"
+      :entry="entry"
+      class="card card-sm rounded-2xl shadow-md transition-transform hover:scale-110"
+    />
   </section>
 </template>
