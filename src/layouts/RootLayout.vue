@@ -12,7 +12,7 @@ const ui = useUiStore();
   >
     <Aside />
     <header class="bg-base-100 sticky top-0 z-[5] col-span-1 p-4">
-      <div class="mx-auto flex items-center gap-3.5">
+      <div class="mx-auto flex items-center justify-between gap-3.5">
         <button class="btn btn-ghost btn-md flex md:hidden" @click="ui.toggle">
           <svg
             class="size-[1.5em]"

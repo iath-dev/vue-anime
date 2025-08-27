@@ -28,6 +28,11 @@ const router = createRouter({
           name: 'anime-detail',
           component: () => import('@/views/AnimeView.vue'),
         },
+        {
+          path: '/search',
+          name: 'search',
+          component: () => import('@/views/SearchView.vue'),
+        },
       ],
     },
     {

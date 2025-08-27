@@ -30,7 +30,9 @@ const { entry } = defineProps<{
         />
       </figure>
       <div class="card-body">
-        <h1 class="card-title line-clamp-2">{{ entry.title }}</h1>
+        <h1 class="card-title line-clamp-1">{{ entry.title }}</h1>
+        <slot></slot>
+        <slot name="actions"></slot>
       </div>
     </router-link>
   </div>

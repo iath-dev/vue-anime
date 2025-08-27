@@ -29,14 +29,9 @@ export const SEARCH_ORDER_BY: SearchOrderBy[] = [
   'favorites',
 ];
 
-export type SearchStatus = 'airing' | 'complete' | 'upcoming' | 'tba';
+export type SearchStatus = 'airing' | 'complete' | 'upcoming';
 
-export const SEARCH_STATUS: SearchStatus[] = [
-  'airing',
-  'complete',
-  'upcoming',
-  'tba',
-];
+export const SEARCH_STATUS: SearchStatus[] = ['airing', 'complete', 'upcoming'];
 
 export type SearchType =
   | 'tv'

@@ -2,11 +2,14 @@
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import debounce from 'lodash.debounce';
 import { useSearchStore } from '@/stores/searchStore';
+import { useRouter } from 'vue-router';
 
 const searchStore = useSearchStore();
 const query = ref('');
 const searchInput = ref<HTMLInputElement | null>(null);
 const searchWrapper = ref<HTMLDivElement | null>(null);
+
+const router = useRouter();
 
 const handleKeyDown = (e: KeyboardEvent) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
@@ -61,7 +64,13 @@ onBeforeUnmount(() => {
           <path d="m21 21-4.3-4.3"></path>
         </g>
       </svg>
-      <input type="search" v-model="query" class="grow" placeholder="Search" />
+      <input
+        type="search"
+        v-model="query"
+        class="grow"
+        placeholder="Search"
+        @keyup.enter="router.push('/search')"
+      />
       <kbd class="kbd kbd-sm">⌘</kbd>
       <kbd class="kbd kbd-sm">K</kbd>
     </label>
