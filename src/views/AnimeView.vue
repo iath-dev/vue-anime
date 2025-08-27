@@ -29,7 +29,7 @@ const route = useRoute();
 
 const animeId = computed(() => route.params.id as string);
 
-const { data, isLoading } = useQuery({
+const { data } = useQuery({
   queryKey: ['anime', animeId],
   queryFn: () => getAnimeFull(animeId.value),
   enabled: !!animeId,
