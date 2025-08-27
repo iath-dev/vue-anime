@@ -1,10 +1,4 @@
-# netlify.toml
 
-[build]
-  command = "npm run build"   # o yarn build
-  publish = "dist"            # cambia a "build" (CRA) o "out" (Next export)
-
-# 🔹 Reescritura para SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
