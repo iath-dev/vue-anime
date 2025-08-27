@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { Anime } from '@/interface/response';
 import { searchAnime } from '@/services/jikan';
+import type { Anime } from '@/interface/api/anime';
 
 export const useSearchStore = defineStore('search', () => {
   const results = ref<Anime[]>([]);
@@ -18,7 +18,7 @@ export const useSearchStore = defineStore('search', () => {
     error.value = null;
 
     try {
-      const response = await searchAnime(searchQuery);
+      const response = await searchAnime({ q: searchQuery });
       results.value = response.data;
     } catch (err) {
       error.value =

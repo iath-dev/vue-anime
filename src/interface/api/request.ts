@@ -15,7 +15,7 @@ export interface JikanRequest {
 }
 
 export interface SearchParams extends JikanRequest {
-  q?: string;
+  q: string;
   score?: number;
   min_score?: number;
   max_score?: number;

@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
         type="search"
         v-model="query"
         class="grow"
-        placeholder="Search"
+        placeholder="Search..."
         @keyup.enter="router.push('/search')"
       />
       <kbd class="kbd kbd-sm">⌘</kbd>
@@ -91,7 +91,7 @@ onBeforeUnmount(() => {
               class="contents"
             >
               <img
-                :src="anime.images.jpg.image_url"
+                :src="anime.images.jpg.image_url!"
                 :alt="anime.title"
                 class="aspect-square h-12 rounded object-cover"
               />
