@@ -1,14 +1,14 @@
-import type { Anime } from '@/interface/api/anime';
-import type { SearchParams, TopParams } from '@/interface/api/request';
-import api from '@/lib/api';
-import type { SeasonalParams } from '../interface/api/request';
+import api from '@/api';
+import type { Anime } from '@/api/types/anime';
+import type { CharacterCard, CharacterStaff } from '@/api/types/characters';
+import type { SearchParams, TopParams } from '@/api/types/request';
 import type {
   ImagesResponse,
   PaginatedResponse,
   RecommendationResponse,
   Response,
-} from '@/interface/api/response';
-import type { CharacterCard, CharacterStaff } from '@/interface/api/characters';
+} from '@/api/types/response';
+import type { SeasonalParams } from './types/request';
 
 export const searchAnime = async ({
   q,

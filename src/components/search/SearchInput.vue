@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import debounce from 'lodash.debounce';
 import { useSearchStore } from '@/stores/searchStore';
+import debounce from 'lodash.debounce';
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 const searchStore = useSearchStore();

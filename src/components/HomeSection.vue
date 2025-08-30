@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Anime } from '@/interface/api/anime';
-import type { PaginatedResponse } from '@/interface/api/response';
+import type { Anime } from '@/api/types/anime';
+import type { PaginatedResponse } from '@/api/types/response';
 import { useQuery } from '@tanstack/vue-query';
 
 const props = defineProps<{

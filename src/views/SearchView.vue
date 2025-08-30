@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref, Transition, TransitionGroup, watch } from 'vue';
-import { useInfiniteQuery } from '@tanstack/vue-query';
-import { searchAnime } from '@/services/jikan';
+import { searchAnime } from '@/api/service';
 import {
   SEARCH_ORDER_BY,
   SEARCH_STATUS,
@@ -9,8 +7,10 @@ import {
   type SearchOrderBy,
   type SearchStatus,
   type SearchType,
-} from '@/interface/api/params';
-import AnimeCard from '@/components/AnimeCard.vue';
+} from '@/api/types/params';
+import AnimeCard from '@/components/anime/AnimeCard.vue';
+import { useInfiniteQuery } from '@tanstack/vue-query';
+import { ref, Transition, TransitionGroup, watch } from 'vue';
 
 const query = ref('');
 const debounceQuery = ref('');

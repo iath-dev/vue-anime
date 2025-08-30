@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AnimeCard from '@/components/AnimeCard.vue';
-import { getCurrentSeason } from '@/services/jikan';
+import { getCurrentSeason } from '@/api/service';
+import AnimeCard from '@/components/anime/AnimeCard.vue';
 import { useInfiniteQuery } from '@tanstack/vue-query';
 import {
   computed,

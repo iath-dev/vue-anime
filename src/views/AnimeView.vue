@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { getAnimeFull } from '@/services/jikan';
+import { getAnimeFull } from '@/api/service';
 import { useQuery } from '@tanstack/vue-query';
 import { computed, defineAsyncComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const Characters = defineAsyncComponent(
-  () => import('@/components/AnimeCharacters.vue')
+  () => import('@/components/anime/AnimeCharacters.vue')
 );
-const Staff = defineAsyncComponent(() => import('@/components/AnimeStaff.vue'));
+const Staff = defineAsyncComponent(() => import('@/components/anime/AnimeStaff.vue'));
 const Recommendations = defineAsyncComponent(
-  () => import('@/components/AnimeRecommendations.vue')
+  () => import('@/components/anime/AnimeRecommendations.vue')
 );
 const Pictures = defineAsyncComponent(
-  () => import('@/components/AnimeImages.vue')
+  () => import('@/components/anime/AnimeImages.vue')
 );
 
 type Tab = 'details' | 'characters' | 'staff' | 'recommendations' | 'pictures';

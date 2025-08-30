@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { NavLink } from '@/interface/nav';
 import { useUiStore } from '@/stores/uiStore';
+import type { NavLink } from '@/types/nav';
 
 const props = defineProps<NavLink>();
 

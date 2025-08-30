@@ -1,6 +1,6 @@
 <script setup>
 import SearchInput from '@/components/search/SearchInput.vue';
-import Aside from '@/components/ui/aside.vue';
+import Aside from '@/components/ui/Aside.vue';
 import { useUiStore } from '@/stores/uiStore';
 
 const ui = useUiStore();

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getAnimePictures } from '@/services/jikan';
+import { getAnimePictures } from '@/api/service';
 import { useQuery } from '@tanstack/vue-query';
 import { TransitionGroup } from 'vue';
 import { useRoute } from 'vue-router';

@@ -1,6 +1,6 @@
 <script setup>
-import { useUiStore } from '@/stores/uiStore';
 import NavLink from '@/components/nav/NavLink.vue';
+import { useUiStore } from '@/stores/uiStore';
 
 const ui = useUiStore();
 </script>

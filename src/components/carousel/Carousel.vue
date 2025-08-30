@@ -1,5 +1,5 @@
 <script setup>
-import { getTopAnime } from '@/services/jikan';
+import { getTopAnime } from '@/api/service';
 import { useQuery } from '@tanstack/vue-query';
 
 const { data, isLoading } = useQuery({

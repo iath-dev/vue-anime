@@ -1,7 +1,7 @@
 <script setup>
+import { getCurrentSeason, getUpcoming } from '@/api/service';
+import ControlCarousel from '@/components/carousel/ControlCarousel.vue';
 import { defineAsyncComponent } from 'vue';
-import ControlCarousel from '@/components/ControlCarousel.vue';
-import { getCurrentSeason, getUpcoming } from '@/services/jikan';
 
 const HomeSection = defineAsyncComponent(
   () => import('@/components/HomeSection.vue')

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Entry } from '@/interface/api/base';
+import type { Entry } from '@/api/types/base';
 
 const { entry } = defineProps<{
   entry: Entry;

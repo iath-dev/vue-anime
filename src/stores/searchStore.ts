@@ -1,7 +1,7 @@
+import { searchAnime } from '@/api/service';
+import type { Anime } from '@/api/types/anime';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { searchAnime } from '@/services/jikan';
-import type { Anime } from '@/interface/api/anime';
 
 export const useSearchStore = defineStore('search', () => {
   const results = ref<Anime[]>([]);

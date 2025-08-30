@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AnimeCard from '@/components/AnimeCard.vue';
-import { getUpcoming } from '@/services/jikan';
+import { getUpcoming } from '@/api/service';
+import AnimeCard from '@/components/anime/AnimeCard.vue';
 import { useInfiniteQuery } from '@tanstack/vue-query';
 import {
   computed,
